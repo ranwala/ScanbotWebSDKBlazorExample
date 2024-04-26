@@ -1,0 +1,129 @@
+﻿@page "/"
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
+@rendermode InteractiveServer
+
+<PageTitle>Home</PageTitle>
+
+<div class="row bg-white justify-content-center">
+
+    <div class="list-group" hidden="@IsItemGroupHidden">
+        <button type="button" class="list-group-item list-group-item-action" @onclick="StartScanDocument">Scan Document</button>
+        <button type="button" class="list-group-item list-group-item-action" @onclick="StartScanBarcode">Scan Barcode</button>
+    </div>
+
+    <div class="row justify-content-center my-2" hidden="@IsActionButtonsHidden">
+        <div class="col-lg-2">
+            <button type="button" class="list-group-item list-group-item-action text-center" @onclick="DisposeScanner">Cancel</button>
+        </div>
+        <div class="col-lg-2">
+            <button type="button" class="list-group-item list-group-item-action text-center" @onclick="NavigateToPreviewPage">Done</button>
+        </div>
+    </div>
+
+    <div id="documentscannerid" class="my-2" style="height: 75%; width: 75%;"></div>
+
+</div>
+
+@code {
+    private IJSObjectReference? jsObjectReference;
+
+    private bool IsItemGroupHidden { get; set; } = false;
+    private bool IsActionButtonsHidden { get; set; } = true;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                jsObjectReference = await JS.InvokeAsync<IJSObjectReference>("import", "./js/scanbotSDKService.js");
+                await InitializeScanbotSDK();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error invoking: {ex.Message}");
+            } 
+        }
+    }
+
+    private async Task StartScanDocument()
+    {
+        try
+        {
+            IsItemGroupHidden = !IsItemGroupHidden;
+            IsActionButtonsHidden = !IsItemGroupHidden;
+            await StartDocumentScanner();
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error invoking: {ex.Message}");
+        }
+    }
+
+    private async Task StartScanBarcode()
+    {
+        try
+        {
+            await StartBarcodeScanner();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error invoking: {ex.Message}");
+        }
+    }
+
+    private async Task NavigateToPreviewPage() {
+        try
+        {
+            Navigation.NavigateTo($"/imagepreview");
+            await DisposeScanner();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error invoking: {ex.Message}");
+        }
+    }
+
+    private async Task DisposeScanner() {
+        try
+        {
+            await CloseScanner();
+            IsItemGroupHidden = !IsItemGroupHidden;
+            IsActionButtonsHidden = !IsItemGroupHidden;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error invoking: {ex.Message}");
+        }
+    }
+
+    private void ShowHideComponents(){
+        IsItemGroupHidden = !IsItemGroupHidden;
+        IsActionButtonsHidden = !IsItemGroupHidden;
+    }
+
+    public async ValueTask InitializeScanbotSDK() {
+        if(jsObjectReference is not null) {
+            await jsObjectReference.InvokeVoidAsync("initialiseSDK");
+        }
+    }  
+
+    public async ValueTask<string?> StartDocumentScanner() =>
+        jsObjectReference is not null ? 
+            await jsObjectReference.InvokeAsync<string>("startDocumentScanner") : null;
+
+    public async ValueTask StartBarcodeScanner() {
+        if(jsObjectReference is not null ) {
+            await jsObjectReference.InvokeVoidAsync("startBarcodeScanner");
+        }
+    }
+        
+    public async ValueTask CloseScanner() {
+        if(jsObjectReference is not null ) {
+            await jsObjectReference.InvokeVoidAsync("disposeScanner");
+        }
+    }
+}

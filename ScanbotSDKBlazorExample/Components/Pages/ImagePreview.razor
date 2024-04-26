@@ -1,0 +1,45 @@
+@page "/imagepreview"
+@inject IJSRuntime JS
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+
+<PageTitle>Image Preview</PageTitle>
+
+<button type="button" class="list-group-item list-group-item-action m-2" style="width: 10%;" @onclick="NavigateToPreviewPage">Go Back</button>
+
+@foreach (var image in CapturedImages)
+{
+    <Card class="m-2">
+        <CardBody>
+            <img src="@image.url" style="width: 25%; height:25%" />
+        </CardBody>
+    </Card>
+}
+
+@code {
+    private IJSObjectReference? jsObjectReference;
+
+    private List<ImageDetailModal> CapturedImages { get; set; } = [];
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                jsObjectReference = await JS.InvokeAsync<IJSObjectReference>("import", "./js/scanbotSDKService.js");
+                var documentResult = await jsObjectReference.InvokeAsync<string>("getDocumentResult");
+                CapturedImages = System.Text.Json.JsonSerializer.Deserialize<List<ImageDetailModal>>(documentResult)!;
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error invoking: {ex.Message}");
+            }    
+        }
+    }
+
+    private void NavigateToPreviewPage() {
+        Navigation.NavigateTo("/");
+    }
+}
