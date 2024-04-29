@@ -3,6 +3,7 @@ let documentScanner = undefined;
 let barcodeScanner = undefined;
 let documentResult = [];
 
+/** Initialise Scanbot SDK */
 export async function initialiseSDK() {
     try {
         scanbotSDK = await ScanbotSDK.initialize({
@@ -17,6 +18,7 @@ export async function initialiseSDK() {
     }
 }
 
+/** Check the validity of the license */
 export async function licenseValidate() {
     try {
         const info = await scanbotSDK.getLicenseInfo();
@@ -26,6 +28,7 @@ export async function licenseValidate() {
     }
 }
 
+/** Start the Document Scanner */
 export async function startDocumentScanner() {
     const config = {
         containerId: "documentscannerid",
@@ -80,6 +83,7 @@ export async function startDocumentScanner() {
     }
 }
 
+/** Generate image url from array buffer */
 async function generateImageURLS(result) {
     if (result == null) return;
 
@@ -94,10 +98,12 @@ async function generateImageURLS(result) {
 
 }
 
+/** Return captured ducuments image list */
 export async function getDocumentResult() {
     return JSON.stringify(documentResult);
 }
 
+/** Manipulate detected barcodes */
 const onBarcodesDetected = async (e) => {
     if (e == null) return;
 
@@ -118,6 +124,7 @@ const onBarcodesDetected = async (e) => {
     }
 }
 
+/** Start the Barcode Scanner */
 export async function startBarcodeScanner() {
     const config = {
         containerId: "documentscannerid",
@@ -135,6 +142,7 @@ export async function startBarcodeScanner() {
     }
 }
 
+/** Dispose Document and Barcode Scanners */
 export async function disposeScanner() {
     if (documentScanner != undefined) {
         documentScanner.dispose();

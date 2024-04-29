@@ -1,0 +1,77 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/obj/Debug/net8.0/scopedcss/projectbundle/ScanbotSDKBlazorExample.bundle.scp.css",
+      "PackagePath": "staticwebassets/ScanbotSDKBlazorExample.bundle.scp.css"
+    },
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/wwwroot/app.css",
+      "PackagePath": "staticwebassets/app.css"
+    },
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/wwwroot/bootstrap/bootstrap.min.css",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css"
+    },
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/wwwroot/bootstrap/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/wwwroot/favicon.png",
+      "PackagePath": "staticwebassets/favicon.png"
+    },
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/wwwroot/js/scanbotSDKService.js",
+      "PackagePath": "staticwebassets/js/scanbotSDKService.js"
+    },
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/wwwroot/wasm/ScanbotSDK.Asm-simd.wasm",
+      "PackagePath": "staticwebassets/wasm/ScanbotSDK.Asm-simd.wasm"
+    },
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/wwwroot/wasm/ScanbotSDK.Asm.wasm",
+      "PackagePath": "staticwebassets/wasm/ScanbotSDK.Asm.wasm"
+    },
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/wwwroot/wasm/ScanbotSDK.Core-simd.js",
+      "PackagePath": "staticwebassets/wasm/ScanbotSDK.Core-simd.js"
+    },
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/wwwroot/wasm/ScanbotSDK.Core.js",
+      "PackagePath": "staticwebassets/wasm/ScanbotSDK.Core.js"
+    },
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/wwwroot/wasm/ScanbotSDK.min.js",
+      "PackagePath": "staticwebassets/wasm/ScanbotSDK.min.js"
+    },
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/wwwroot/wasm/tfjs-backend-wasm-simd.wasm",
+      "PackagePath": "staticwebassets/wasm/tfjs-backend-wasm-simd.wasm"
+    },
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/wwwroot/wasm/tfjs-backend-wasm-threaded-simd.wasm",
+      "PackagePath": "staticwebassets/wasm/tfjs-backend-wasm-threaded-simd.wasm"
+    },
+    {
+      "Id": "/Users/chanduranwala/scanbot/blazor/ScanbotWebSDKBlazorExample/ScanbotSDKBlazorExample/wwwroot/wasm/tfjs-backend-wasm.wasm",
+      "PackagePath": "staticwebassets/wasm/tfjs-backend-wasm.wasm"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.ScanbotSDKBlazorExample.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.ScanbotSDKBlazorExample.props",
+      "PackagePath": "build\\ScanbotSDKBlazorExample.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.ScanbotSDKBlazorExample.props",
+      "PackagePath": "buildMultiTargeting\\ScanbotSDKBlazorExample.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.ScanbotSDKBlazorExample.props",
+      "PackagePath": "buildTransitive\\ScanbotSDKBlazorExample.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

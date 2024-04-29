@@ -105,22 +105,26 @@
         IsActionButtonsHidden = !IsItemGroupHidden;
     }
 
+    // InitializeScanbotSDK via calling scanbotSDKService.js
     public async ValueTask InitializeScanbotSDK() {
         if(jsObjectReference is not null) {
             await jsObjectReference.InvokeVoidAsync("initialiseSDK");
         }
     }  
 
+    // StartDocumentScanner via calling scanbotSDKService.js
     public async ValueTask<string?> StartDocumentScanner() =>
         jsObjectReference is not null ? 
             await jsObjectReference.InvokeAsync<string>("startDocumentScanner") : null;
 
+    // StartBarcodeScanner via calling scanbotSDKService.js
     public async ValueTask StartBarcodeScanner() {
         if(jsObjectReference is not null ) {
             await jsObjectReference.InvokeVoidAsync("startBarcodeScanner");
         }
     }
         
+    // Dispose scanners via calling scanbotSDKService.js
     public async ValueTask CloseScanner() {
         if(jsObjectReference is not null ) {
             await jsObjectReference.InvokeVoidAsync("disposeScanner");
